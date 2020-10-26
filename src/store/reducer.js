@@ -1,10 +1,19 @@
-const reducer = (state = 0, action) => {
+import bankConstants from '../constants';
+
+const initialState = {
+    balance: 0
+};
+
+const reducer = (state = initialState, action) => {
     switch(action.type){
-        case 'INCREMENT': return state + 1;
-        case 'DECREMENT': return state - 1;
-        case 'RESET': return 0;
+        case bankConstants.CREATED_ACCOUNT: 
+            return { ...state, balance: 0 }
+        case bankConstants.DEPOSITED_INTO_ACCOUNT:
+            return Object.assign( {}, state, {balance: state.balance + action.amount});
+        case bankConstants.WITHDREW_FROM_ACCOUNT:
+            return Object.assign({}, state, {balance: state.balance - action.amount});
         default:
-            return state;
+            return state.balance;
     }
 };
 

@@ -1,17 +1,22 @@
-export function increment(){
+import bankConstants from '../constants';
+
+export function createAccount(){
     return {
-        type: 'INCREMENT'
+        type: bankConstants.CREATED_ACCOUNT,
+        amount: 0
     }
 }
 
-export function decrement(){
+export function depositIntoAccount(amount){
     return {
-        type: 'DECREMENT'
+        type: bankConstants.DEPOSITED_INTO_ACCOUNT,
+        amount: amount
     }
 }
 
-export function reset(){
+export function withdrawFromAccount(amount){
     return {
-        type: 'RESET'
+        type: bankConstants.WITHDREW_FROM_ACCOUNT,
+        amount: amount,
     }
 }
